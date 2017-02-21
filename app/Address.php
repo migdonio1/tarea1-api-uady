@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     //
+    protected $guarded = ['id'];
+
+    public function seller() {
+        return $this->hasOne('App\Seller');
+    }
 }
