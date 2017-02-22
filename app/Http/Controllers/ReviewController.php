@@ -11,14 +11,12 @@ class ReviewController extends Controller
     //
     public function create(Request $request, $id) {
         $fields = $request->input();
-        $product = Product::with('reviews', 'tags', 'user')->find($id);
 
         $review = Review::create($fields);
 
         $review->product_id = $review->id;
         $review->save();
 
-        dd($product);
         return response()->json($review);
     }
 
