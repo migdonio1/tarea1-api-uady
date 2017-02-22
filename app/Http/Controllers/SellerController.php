@@ -34,7 +34,7 @@ class SellerController extends Controller
         $updateSeller->fill($fields);
         $updateSeller->save();
 
-        return $request->json($updateSeller);
+        return response()->json($updateSeller);
     }
 
     public function edit(Request $request, $id) {
@@ -44,6 +44,6 @@ class SellerController extends Controller
         $updateSeller->fill($fields);
         $updateSeller->save();
 
-        return $request->json($updateSeller);
+        return response()->json($updateSeller);
     }
 }
