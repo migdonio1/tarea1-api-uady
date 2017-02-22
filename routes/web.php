@@ -20,6 +20,14 @@ Route::get('/sellers/{id}', 'SellerController@show');
 Route::post('/sellers', 'SellerController@create');
 Route::put('/sellers/{id}', 'SellerController@update');
 Route::patch('/sellers/{id}', 'SellerController@edit');
+Route::delete('/sellers/{id}', 'SellerController@delete');
 
 Route::post('/sellers/{id}/address', 'AddressController@create');
 Route::put('/sellers/{id}/address', 'AddressController@update');
+
+Route::get('/products', 'ProductController@index');
+Route::get('/products/{id}', 'ProductController@show');
+
+Route::get('/products/{id}/reviews', 'ReviewController@index');
+Route::post('/products/{id}/reviews', 'ReviewController@create');
+Route::delete('/products/{productId}/reviews/{reviewId}', 'ReviewController@delete');

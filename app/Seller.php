@@ -12,4 +12,8 @@ class Seller extends Model
     public function address() {
         return $this->belongsTo('App\Address', 'address_id');
     }
+
+    public function products() {
+        return $this->hasMany('App\Product');
+    }
 }
