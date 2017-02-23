@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Tag;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -32,6 +33,10 @@ class ProductController extends Controller
             array_push($tags, $tag);
         }
 
+        $tags = Collection::make($tags);
+
+        dd($tags);
+
         $product  = Product::create($productData);
         $product->tags()->saveMany($tags);
 
@@ -40,10 +45,20 @@ class ProductController extends Controller
 
     public function update(Request $request, $id) {
         $product = Product::with('seller', 'tags')->find($id);
-        $fields =  $request->input();
+        $productData = $request->input('product');
+        $tagsData = $request->input('tags');
+        $tags = [];
 
-        $product->fill($fields);
+        foreach ($tagsData as $tagData) {
+            $tag = Tag::firstOrCreate($tagData);
+            array_push($tags, $tag);
+        }
+
+
+        $product->fill($productData);
         $product->save();
+
+        $product->saveMany($tags);
 
         return response()->json($product);
     }
