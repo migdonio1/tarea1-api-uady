@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProduct;
 use App\Product;
 use App\Tag;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,7 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    public function create(Request $request) {
+    public function create(StoreProduct $request) {
         $productData = $request->input('product');
         $tagsData = $request->input('tags');
         $tags = [];
@@ -43,7 +45,7 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    public function update(Request $request, $id) {
+    public function update(StoreProduct $request, $id) {
         $product = Product::with('seller', 'tags')->find($id);
         $productData = $request->input('product');
         $tagsData = $request->input('tags');

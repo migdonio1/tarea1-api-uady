@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReview;
 use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     //
-    public function create(Request $request, $id) {
+    public function create(StoreReview $request, $id) {
         $fields = $request->input();
 
         $review = Review::create($fields);

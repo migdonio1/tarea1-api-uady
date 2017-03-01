@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSeller;
+use App\Http\Requests\StoreSellerPost;
 use App\Seller;
 use Illuminate\Http\Request;
 
@@ -20,14 +22,14 @@ class SellerController extends Controller
         return response()->json($seller);
     }
 
-    public function create(Request $request) {
+    public function create(StoreSeller $request) {
         $input = $request->input();
         $newSeller = Seller::create($input);
 
         return response()->json($newSeller);
     }
 
-    public function update(Request $request, $id) {
+    public function update(StoreSeller $request, $id) {
         $updateSeller = Seller::with('address')->find($id);
         $fields =  $request->input();
 
