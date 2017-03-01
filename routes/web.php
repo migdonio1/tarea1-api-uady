@@ -32,6 +32,7 @@ Route::put('/products/{id}', 'ProductController@update');
 Route::patch('/products/{id}', 'ProductController@edit');
 Route::delete('/products/{id}', 'ProductController@delete');
 
+
 Route::get('/products/{id}/reviews', 'ReviewController@index');
 Route::post('/products/{id}/reviews', 'ReviewController@create');
 Route::delete('/products/{productId}/reviews/{reviewId}', 'ReviewController@delete');
