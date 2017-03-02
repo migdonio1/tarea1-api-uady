@@ -27,7 +27,7 @@ class ReviewController extends Controller
         return response()->json($product->reviews);
     }
 
-    public function delete(Request $request, $productId, $reviewId) {
+    public function destroy(Request $request, $productId, $reviewId) {
         $review = Review::find($reviewId);
         $review->delete();
 

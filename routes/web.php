@@ -20,7 +20,7 @@ Route::get('/sellers/{id}', 'SellerController@show');
 Route::post('/sellers', 'SellerController@create');
 Route::put('/sellers/{id}', 'SellerController@update');
 Route::patch('/sellers/{id}', 'SellerController@edit');
-Route::delete('/sellers/{id}', 'SellerController@delete');
+Route::delete('/sellers/{id}', 'SellerController@destroy');
 
 Route::post('/sellers/{id}/address', 'AddressController@create');
 Route::put('/sellers/{id}/address', 'AddressController@update');
@@ -30,9 +30,9 @@ Route::post('/products', 'ProductController@create');
 Route::get('/products/{id}', 'ProductController@show');
 Route::put('/products/{id}', 'ProductController@update');
 Route::patch('/products/{id}', 'ProductController@edit');
-Route::delete('/products/{id}', 'ProductController@delete');
+Route::delete('/products/{id}', 'ProductController@destroy');
 
 
 Route::get('/products/{id}/reviews', 'ReviewController@index');
 Route::post('/products/{id}/reviews', 'ReviewController@create');
-Route::delete('/products/{productId}/reviews/{reviewId}', 'ReviewController@delete');
+Route::delete('/products/{productId}/reviews/{reviewId}', 'ReviewController@destroy');

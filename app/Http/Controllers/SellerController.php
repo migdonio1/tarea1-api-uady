@@ -49,7 +49,7 @@ class SellerController extends Controller
         return response()->json($updateSeller);
     }
 
-    public function delete($id) {
+    public function destroy($id) {
         $removeSeller = Seller::find($id);
 
         $removeSeller->delete();
